@@ -8,6 +8,7 @@ namespace DDD.Core.Managers
 {
     public interface IProfileManager
     {
+        Task<IEnumerable<UserProfile>> GetAllProfiles();
         Task<UserProfile> GetProfile(int id);
         int DeleteAllProfiles();
         Task<UserProfile> CreateProfile(UserProfile profile);

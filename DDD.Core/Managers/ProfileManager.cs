@@ -18,6 +18,11 @@ namespace DDD.Core.Managers
             
         }
 
+        public async Task<IEnumerable<UserProfile>> GetAllProfiles()
+        {
+            return await this.GetAllAsync();
+        }
+
         public async Task<UserProfile> GetProfile(int id)
         {
             this.Logger.LogInformation($"Retrieving user profile, id: {id}");
