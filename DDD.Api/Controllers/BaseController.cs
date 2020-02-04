@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Api.Controllers
 {
+    [Route("api/[controller]/[action]")]
     public class BaseController : ControllerBase
     {
         public readonly ILogger Logger;

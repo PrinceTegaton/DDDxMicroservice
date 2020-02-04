@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.Api", "DDD.Api\DDD.Api.csproj", "{468F0229-C408-42C5-9250-75DC1C5875F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDD.Api", "DDD.Api\DDD.Api.csproj", "{468F0229-C408-42C5-9250-75DC1C5875F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.Domain", "DDD.Domain\DDD.Domain.csproj", "{D37BFDA3-2105-4000-A1E2-51381B41ED09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDD.Domain", "DDD.Domain\DDD.Domain.csproj", "{D37BFDA3-2105-4000-A1E2-51381B41ED09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.Infrastructure", "DDD.Infrastructure\DDD.Infrastructure.csproj", "{1859D951-5346-499B-ADCC-3E52B0A84006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDD.Infrastructure", "DDD.Infrastructure\DDD.Infrastructure.csproj", "{1859D951-5346-499B-ADCC-3E52B0A84006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.Core", "DDD.Core\DDD.Core.csproj", "{A1EF2BA6-B9A2-433F-A340-26BC7055B911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDD.Core", "DDD.Core\DDD.Core.csproj", "{A1EF2BA6-B9A2-433F-A340-26BC7055B911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.UnitTest", "DDD.UnitTest\DDD.UnitTest.csproj", "{981FB38C-6959-409D-86B5-B4FC9A66647B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A1EF2BA6-B9A2-433F-A340-26BC7055B911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1EF2BA6-B9A2-433F-A340-26BC7055B911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1EF2BA6-B9A2-433F-A340-26BC7055B911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{981FB38C-6959-409D-86B5-B4FC9A66647B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981FB38C-6959-409D-86B5-B4FC9A66647B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981FB38C-6959-409D-86B5-B4FC9A66647B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981FB38C-6959-409D-86B5-B4FC9A66647B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

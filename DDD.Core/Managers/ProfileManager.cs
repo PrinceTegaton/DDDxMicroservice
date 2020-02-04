@@ -15,7 +15,7 @@ namespace DDD.Core.Managers
     {
         public ProfileManager(DbContext context, ILogger<UserProfile> logger) : base(context, logger)
         {
-            
+
         }
 
         public async Task<IEnumerable<UserProfile>> GetAllProfiles()
@@ -34,20 +34,26 @@ namespace DDD.Core.Managers
             var all = this.GetAll();
             int count = 0;
 
-            foreach (var i in all)
+            all.ToList().ForEach(a =>
             {
-                this.Remove(i);
+                this.Delete(a);
                 count++;
-            }
-            
+            });
+
             return count;
+
+            //foreach (var i in all.ToList())
+            //{
+            //    this.Delete(i);
+            //    count++;
+            //}
         }
 
         public async Task<UserProfile> CreateProfile(UserProfile profile)
         {
             this.Logger.LogInformation("Creating user profile --> {@profile}", profile);
 
-            bool r = await this.AddAsync(profile);            
+            bool r = await this.AddAsync(profile);
             return r ? profile : null;
         }
     }

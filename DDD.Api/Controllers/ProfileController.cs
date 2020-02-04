@@ -15,7 +15,7 @@ namespace DDD.Api.Controllers
     {
         private readonly IProfileManager _profileManager;
 
-        public ProfileController(ILogger logger, IHostingEnvironment env, IProfileManager profileManager) : base(logger, env)
+        public ProfileController(ILogger<UserProfile> logger, IHostingEnvironment env, IProfileManager profileManager) : base(logger, env)
         {
             _profileManager = profileManager;
         }
@@ -29,7 +29,7 @@ namespace DDD.Api.Controllers
 
                 var rsp = new ApiResponse<IEnumerable<UserProfile>>
                 {
-                    Code = ResponseCodes.Ok,
+                    StatusCode = ResponseCodes.Ok,
                     Message = "User profiles retrieved ok",
                     Data = profiles
                 };
@@ -48,6 +48,12 @@ namespace DDD.Api.Controllers
         public async Task<IActionResult> GetProfile(int id)
         {
             return  Ok(await _profileManager.GetProfile(id));
+        }
+
+        [HttpGet]
+        public IActionResult ShowError()
+        {
+            throw new Exception("This exception is handled globally without a TRY...CATCH... block");
         }
     }
 }

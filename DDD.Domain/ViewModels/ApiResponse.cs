@@ -6,7 +6,14 @@ namespace DDD.Domain
 {
     public class ApiResponse
     {
-        public ResponseCodes Code { get; set; } = ResponseCodes.Failed;
+        public ResponseCodes StatusCode { get; set; } = ResponseCodes.Failed;
+        public string Status
+        {
+            get
+            {
+                return StatusCode.ToString();
+            }
+        }
         public string Message { get; set; }
     }
 
@@ -21,6 +28,6 @@ namespace DDD.Domain
         InvalidRequest = 2,
         Failed = 3,
         Unauthorized = 4,
-        Denied = 5
+        Error = 5
     }
 }

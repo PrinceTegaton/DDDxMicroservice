@@ -9,7 +9,8 @@ namespace DDD.Infrastructure.Repository
 
         public ManagerBase(DbContext context, ILogger<TEntity> logger) : base(context)
         {
-            this.Logger = logger;
+            if (logger != null)
+                this.Logger = logger;
         }
     }
 }

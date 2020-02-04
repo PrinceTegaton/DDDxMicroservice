@@ -4,6 +4,7 @@ using DDD.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DDD.Infrastructure.DataAccess
 {
@@ -14,11 +15,19 @@ namespace DDD.Infrastructure.DataAccess
             
         }
 
+        // database entities
         public DbSet<UserProfile> Profile { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
+            // ignore deleted records on all 'select' queries
+            modelBuilder.Entity<UserProfile>().HasQueryFilter(a => !a.IsDeleted);
         }
     }
 }

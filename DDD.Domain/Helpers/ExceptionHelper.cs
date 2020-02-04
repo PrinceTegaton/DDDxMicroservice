@@ -12,7 +12,7 @@ namespace DDD.Domain.Helpers
         {
             var exceptionMessage = new StringBuilder();
 
-            exceptionMessage.Append("Exception:" + ex.GetType());
+            exceptionMessage.Append(ex.GetType());
             exceptionMessage.Append("\n" + "Message:" + ex.Message);
 
             exceptionMessage.Append("\n" + "Source:" + ex.Source);
@@ -27,7 +27,7 @@ namespace DDD.Domain.Helpers
         {
             var exceptionMessage = new StringBuilder();
 
-            exceptionMessage.Append(prepend + "Exception:" + ex.GetType());
+            exceptionMessage.Append(prepend + ex.GetType());
             exceptionMessage.Append("\n" + prepend + "Message:" + ex.Message);
 
             exceptionMessage.Append(GetOtherExceptionProperties(ex, "\n" + prepend));
