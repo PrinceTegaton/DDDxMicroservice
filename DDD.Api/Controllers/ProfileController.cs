@@ -21,7 +21,7 @@ namespace DDD.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllProfiles()
         {
             try
             {
@@ -45,9 +45,9 @@ namespace DDD.Api.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> GetProfile(int id)
         {
-            return "value";
+            return  Ok(await _profileManager.GetProfile(id));
         }
     }
 }
