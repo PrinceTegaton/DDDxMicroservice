@@ -15,11 +15,19 @@ namespace DDD.Api.Controllers
     {
         private readonly IProfileManager _profileManager;
 
-        public ProfileController(ILogger<UserProfile> logger, IHostingEnvironment env, IProfileManager profileManager) : base(logger, env)
+        public ProfileController(
+            ILogger<UserProfile> logger, 
+            IHostingEnvironment env, 
+            IProfileManager profileManager) : base(logger, env)
         {
             _profileManager = profileManager;
         }
 
+        /// <summary>
+        /// Retrieve all saved user profiles
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(typeof(ApiResponse<IEnumerable<UserProfile>>), 200)]
         [HttpGet]
         public async Task<IActionResult> GetAllProfiles()
         {
@@ -43,13 +51,23 @@ namespace DDD.Api.Controllers
             }
         }
 
-        // GET api/values/5
+        /// <summary>
+        /// Get user profile by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ProducesResponseType(typeof(ApiResponse<UserProfile>), 200)]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfile(int id)
         {
             return  Ok(await _profileManager.GetProfile(id));
         }
 
+        /// <summary>
+        /// Test global error handling
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(typeof(ApiResponse), 200)]
         [HttpGet]
         public IActionResult ShowError()
         {

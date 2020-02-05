@@ -26,7 +26,9 @@ namespace DDD.Api.Controllers
         // read authenticated user data into object
         public ProfileViewModel Profile { get => GetProfile(); }
 
-        public string GetModelStateValidationErrors()
+        // use protected to prevent swagger from picking it up
+        // swagger will throw exception because the method have no HttpVerb
+        protected string GetModelStateValidationErrors()
         {
             string message = string.Join("; ", ModelState.Values
                                     .SelectMany(a => a.Errors)
@@ -34,7 +36,7 @@ namespace DDD.Api.Controllers
             return message;
         }
 
-        public string GetErrorMessage(Exception ex, string customMessage = null)
+        protected string GetErrorMessage(Exception ex, string customMessage = null)
         {
             Logger?.LogError(ex?.Message, ex);
 
@@ -45,7 +47,7 @@ namespace DDD.Api.Controllers
 
         }
 
-        public IActionResult HandleError(Exception ex, string customMessage = null)
+        protected IActionResult HandleError(Exception ex, string customMessage = null)
         {
             var rsp = new ApiResponse<bool>();
 
@@ -59,7 +61,7 @@ namespace DDD.Api.Controllers
             return Ok(rsp);
         }
 
-        private ProfileViewModel GetProfile()
+        protected ProfileViewModel GetProfile()
         {
             if (!Request.HttpContext.User.Identity.IsAuthenticated)
                 return null;
@@ -76,7 +78,7 @@ namespace DDD.Api.Controllers
             return profile;
         }
 
-        private string GetObjectValue(string obj)
+        protected string GetObjectValue(string obj)
         {
             if (string.IsNullOrEmpty(obj)) return string.Empty;
             return obj;

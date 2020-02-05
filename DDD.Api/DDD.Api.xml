@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DDD.Api</name>
+    </assembly>
+    <members>
+        <member name="M:DDD.Api.Controllers.ProfileController.GetAllProfiles">
+            <summary>
+            Retrieve all saved user profiles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DDD.Api.Controllers.ProfileController.GetProfile(System.Int32)">
+            <summary>
+            Get user profile by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DDD.Api.Controllers.ProfileController.ShowError">
+            <summary>
+            Test global error handling
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DDD.Api.Controllers.SystemController.Ping">
+            <summary>
+            Check app state on the server
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

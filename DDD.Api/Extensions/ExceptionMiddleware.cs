@@ -21,7 +21,7 @@ namespace DDD.Api.Extensions
 
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostingEnvironment env)
         {
-            _logger = logger; //configure.from.nlog.loggger;
+            _logger = logger;
             _next = next;
             _env = env;
         }
@@ -45,7 +45,7 @@ namespace DDD.Api.Extensions
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            string msg = _env.IsDevelopment() ? exception.ToReadableString() : "Internal Server Error from the custom middleware.";
+            string msg = _env.IsDevelopment() ? exception.Message : "Internal Server Error from the custom middleware.";
             var res = JsonConvert.SerializeObject(new ApiResponse
             {
                 StatusCode = ResponseCodes.Error,

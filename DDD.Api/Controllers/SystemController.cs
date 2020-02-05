@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DDD.Core.Managers;
 using DDD.Domain;
 using DDD.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,6 +19,12 @@ namespace DDD.Api.Controllers
             
         }
 
+        /// <summary>
+        /// Check app state on the server
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(ApiResponse), 200)]
         [HttpGet]
         public IActionResult Ping()
         {

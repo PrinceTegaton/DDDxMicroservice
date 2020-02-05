@@ -1,0 +1,14 @@
+{
+  "AppClients": [
+    {
+      "Name": "Guarantee Trust Bank",
+      "Key": "12345",
+      "IsActive": true
+    },
+    {
+      "Name": "Access Bank",
+      "Key": "54321",
+      "IsActive": true
+    }
+  ]
+}
