@@ -28,7 +28,7 @@ PROJECT STRUCTURE
 	- Authentication
 	- Extensions
 - DDD.Core
-	- Managers (Add business login here)
+	- Managers (Add business logic here)
 - DDD.Domain
 	- Models
 	- ViewModels
