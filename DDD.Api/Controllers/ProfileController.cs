@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DDD.Api.Authentication;
 using DDD.Core.Managers;
 using DDD.Domain;
 using DDD.Domain.Models;
@@ -64,18 +65,23 @@ namespace DDD.Api.Controllers
         }
 
         /// <summary>
-        /// Test method
+        /// Read current client info
         /// </summary>
         /// <returns></returns>
-        [ProducesResponseType(typeof(ApiResponse<DateTime>), 200)]
+        [ProducesResponseType(typeof(ApiResponse<AppClient>), 200)]
         [HttpGet]
-        public IActionResult Test()
+        public IActionResult GetClientInfo()
         {
-            return Ok(new ApiResponse<DateTime>
+            return Ok(new ApiResponse<AppClient>
             {
                 StatusCode = ResponseCodes.Ok,
-                Message = "Test method 2 days ahead",
-                Data = DateTime.Now.AddDays(2)
+                Message = $"Current client details retrieved from claims",
+                Data = new AppClient
+                {
+                    Key = CurrentClient.ClientId,
+                    Name = CurrentClient.Name,
+                    IsActive = true
+                }
             });
         }
 

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DDD.Api.Authentication
@@ -63,6 +64,14 @@ namespace DDD.Api.Authentication
                     context.Fail();
                     return;
                 }
+
+                var newClaims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.PrimarySid, client.Key),
+                        new Claim(ClaimTypes.NameIdentifier, client.Name)
+                    };
+                
+                context.User.AddIdentity(new ClaimsIdentity(newClaims));
 
                 context.Succeed(requirement);
             }

@@ -1,4 +1,5 @@
-﻿using DDD.Domain;
+﻿using DDD.Api.Authentication;
+using DDD.Domain;
 using DDD.Domain.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +24,13 @@ namespace DDD.Api.Controllers
             Logger = logger;
         }
 
-        // read authenticated user data into object
-        public ProfileViewModel Profile { get => GetProfile(); }
+        protected ClientIdentity CurrentClient
+        {
+            get
+            {
+                return new ClientIdentity(User as ClaimsPrincipal);
+            }
+        }
 
         // use protected to prevent swagger from picking it up
         // swagger will throw exception because the method have no HttpVerb
@@ -59,29 +65,6 @@ namespace DDD.Api.Controllers
 
             Logger?.LogError(ex?.Message, ex);
             return Ok(rsp);
-        }
-
-        protected ProfileViewModel GetProfile()
-        {
-            if (!Request.HttpContext.User.Identity.IsAuthenticated)
-                return null;
-
-            var claims = User.Identity as ClaimsIdentity;
-
-            var profile = new ProfileViewModel();
-            if (claims != null)
-            {
-                profile.Id = GetObjectValue(claims.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-                profile.EmailAddress = GetObjectValue(claims.FindFirst(ClaimTypes.Name)?.Value);
-            }
-
-            return profile;
-        }
-
-        protected string GetObjectValue(string obj)
-        {
-            if (string.IsNullOrEmpty(obj)) return string.Empty;
-            return obj;
         }
     }
 }

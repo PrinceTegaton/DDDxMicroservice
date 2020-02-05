@@ -4,6 +4,16 @@
         <name>DDD.Api</name>
     </assembly>
     <members>
+        <member name="P:DDD.Api.Authentication.ClientIdentity.ClientId">
+            <summary>
+            Client Id
+            </summary>
+        </member>
+        <member name="P:DDD.Api.Authentication.ClientIdentity.Name">
+            <summary>
+            Client Name
+            </summary>
+        </member>
         <member name="M:DDD.Api.Controllers.ProfileController.GetAllProfiles">
             <summary>
             Retrieve all saved user profiles
@@ -17,9 +27,9 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:DDD.Api.Controllers.ProfileController.Test">
+        <member name="M:DDD.Api.Controllers.ProfileController.GetClientInfo">
             <summary>
-            Test method
+            Read current client info
             </summary>
             <returns></returns>
         </member>
