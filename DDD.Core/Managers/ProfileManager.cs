@@ -18,6 +18,17 @@ namespace DDD.Core.Managers
 
         }
 
+        public async Task<IEnumerable<UserProfile>> GetAllProfilesFromStoredProcedure(string searchKeyword)
+        {
+            // load data from StoredProcedure. helps when the query is large
+            await Task.Run(()=>
+            {
+                return this.SqlQuery<UserProfile>("EXEC [dbo].[sp_GetAllProfiles] @p0", searchKeyword);
+            });
+
+            return null;
+        }
+
         public async Task<IEnumerable<UserProfile>> GetAllProfiles()
         {
             return await this.GetAllAsync();

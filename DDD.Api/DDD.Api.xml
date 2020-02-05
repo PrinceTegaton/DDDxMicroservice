@@ -17,6 +17,12 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:DDD.Api.Controllers.ProfileController.Test">
+            <summary>
+            Test method
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:DDD.Api.Controllers.ProfileController.ShowError">
             <summary>
             Test global error handling

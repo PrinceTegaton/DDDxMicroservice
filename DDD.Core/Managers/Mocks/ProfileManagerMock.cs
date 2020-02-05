@@ -39,5 +39,10 @@ namespace DDD.Core.Managers.Mocks
             await _context.Profile.AddAsync(profile);
             return profile;
         }
+
+        public Task<IEnumerable<UserProfile>> GetAllProfilesFromStoredProcedure(string searchKeyword)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

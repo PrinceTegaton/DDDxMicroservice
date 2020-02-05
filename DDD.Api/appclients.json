@@ -1,14 +1,19 @@
 {
   "AppClients": [
     {
-      "Name": "Guarantee Trust Bank",
-      "Key": "12345",
+      "Name": "MicroService 01",
+      "Key": "D73029D0-010B-405D-B9F1-DC82E854A4FC",
       "IsActive": true
     },
     {
-      "Name": "Access Bank",
-      "Key": "54321",
+      "Name": "MicroService 02",
+      "Key": "6CD762DA-E3D0-492E-9385-1FC7D2E1073C",
       "IsActive": true
+    },
+    {
+      "Name": "MicroService 03",
+      "Key": "6CD762DA-E3D0-492E-9385-1FC7D2E1073C",
+      "IsActive": false
     }
   ]
 }

@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Rext;
-using System.Collections.Generic;
 
 namespace DDD.Api
 {
@@ -43,29 +41,6 @@ namespace DDD.Api
             // bind SimpleRepository
             services.AddTransient<DbContext, AppDbContext>();
             services.AddScoped(typeof(ISimpleRepository<>), typeof(SimpleRepository<>));
-
-            services.AddAuthentication("Bearer")
-                    .AddJwtBearer("Bearer", options =>
-                    {
-                        options.Authority = "APIStore";
-                        options.RequireHttpsMetadata = false;
-                        options.Audience = "APIStore";
-                    });
-
-            // load clients into app memory
-            // on add of new client, service must be restarted
-
-            var clients = new List<AppClient>();
-            Configuration.GetSection("AppClients").Bind(clients);
-            services.AddSingleton(clients);
-            
-            services.AddAuthorization(opt =>
-            {
-                opt.DefaultPolicy = new AuthorizationPolicyBuilder()
-                                        .AddRequirements(new APIKeyStore(AppClient.LoadClients(clients)))
-                                        .Build();
-            });
-
 
             // simple HttpClient util
             SetupRext();

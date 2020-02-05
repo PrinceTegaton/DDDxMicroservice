@@ -64,6 +64,22 @@ namespace DDD.Api.Controllers
         }
 
         /// <summary>
+        /// Test method
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(typeof(ApiResponse<DateTime>), 200)]
+        [HttpGet]
+        public IActionResult Test()
+        {
+            return Ok(new ApiResponse<DateTime>
+            {
+                StatusCode = ResponseCodes.Ok,
+                Message = "Test method 2 days ahead",
+                Data = DateTime.Now.AddDays(2)
+            });
+        }
+
+        /// <summary>
         /// Test global error handling
         /// </summary>
         /// <returns></returns>
